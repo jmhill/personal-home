@@ -1,0 +1,19 @@
+{
+  "name": "personal-home",
+  "scripts": {
+    "dev": "run-p dev:*",
+    "dev:wrangler": "wrangler pages dev dist --live-reload",
+    "dev:esbuild": "esbuild --bundle src/server.ts --format=esm --watch --outfile=dist/_worker.js",
+    "build": "esbuild --bundle src/server.ts --format=esm --outfile=dist/_worker.js",
+    "deploy": "wrangler pages publish dist",
+    "cf-typegen": "wrangler types --env-interface CloudflareBindings"
+  },
+  "dependencies": {
+    "hono": "^4.6.19"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250124.3",
+    "npm-run-all": "^4.1.5",
+    "wrangler": "^3.105.1"
+  }
+}
